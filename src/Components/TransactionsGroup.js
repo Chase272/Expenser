@@ -1,12 +1,20 @@
-import { Card, Container, List, Typography } from "@mui/material";
+import { Card, Container, List, Stack, Typography } from "@mui/material";
 import React from "react";
 import TransactionCard from "./TransactionCard";
 
 function TransactionsGroup() {
   return (
-    <Container>
-      <Typography>Transcations</Typography>
-      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+    <Container disableGutters>
+      <Stack
+        direction={"row"}
+        justifyContent={"space-between"}
+        paddingX={2}
+        alignItems={"center"}
+      >
+        <Typography variant="h5">Transcations</Typography>
+        <Typography variant="h7">See All</Typography>
+      </Stack>
+      <List>
         <TransactionCard />
         <TransactionCard />
         <TransactionCard />

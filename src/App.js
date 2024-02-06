@@ -14,9 +14,8 @@ function App() {
       <Grid
         container
         direction={"row"}
-        justifyContent={"space-around"}
+        justifyContent={"space-between"}
         alignItems={"flex-start"}
-        spacing={5}
       >
         <Grid item>
           <Dashboard />
@@ -25,7 +24,7 @@ function App() {
         <Grid item>
           <ChartGroup />
         </Grid>
-        <Grid item>
+        <Grid item width={"25%"}>
           <TransactionsGroup />
         </Grid>
       </Grid>
