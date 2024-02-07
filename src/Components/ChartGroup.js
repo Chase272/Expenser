@@ -3,7 +3,7 @@ import LineChartComponent from "../Charts/LineChartComponent";
 
 function ChartGroup() {
   return (
-    <Box>
+    <Box style={{ backgroundColor: "" }} padding={4}>
       <Typography>Line Chart</Typography>
       <LineChartComponent />
     </Box>

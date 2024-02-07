@@ -14,10 +14,11 @@ function App() {
       <Grid
         container
         direction={"row"}
-        justifyContent={"space-between"}
+        // justifyContent={"space-between"}
+        columnSpacing={3}
         alignItems={"flex-start"}
       >
-        <Grid item>
+        <Grid width={"30%"} style={{ backgroundColor: "" }}>
           <Dashboard />
         </Grid>
 
