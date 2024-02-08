@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import LineChartComponent from "../Charts/LineChartComponent";
+import LineChartComponent from "../Charts/SpendingsChart";
 
 function ChartGroup() {
   return (

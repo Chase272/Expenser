@@ -10,7 +10,7 @@ const data = [
   { month: "Jun", value: 1900 },
 ];
 
-function LineChartComponent() {
+function SpendingsChart() {
   return (
     <LineChart
       width={600}
@@ -27,4 +27,4 @@ function LineChartComponent() {
   );
 }
 
-export default LineChartComponent;
+export default SpendingsChart;

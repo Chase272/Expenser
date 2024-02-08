@@ -4,14 +4,17 @@ import TransactionCard from "./TransactionCard";
 
 function TransactionsGroup() {
   return (
-    <Container disableGutters>
+    <Container
+      disableGutters
+      style={{ display: "inline-block", width: "160%" }}
+    >
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
         paddingX={2}
-        alignItems={"center"}
+        alignItems={"flex-end"}
       >
-        <Typography variant="h5">Transcations</Typography>
+        <Typography variant="h5">Top Transcations</Typography>
         <Typography variant="h7">See All</Typography>
       </Stack>
       <List>
