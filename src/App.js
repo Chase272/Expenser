@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <UserCard />
-        <SpendingsCard />
+        {/* <SpendingsCard /> */}
         <Dashboard />
       </div>
     </BrowserRouter>

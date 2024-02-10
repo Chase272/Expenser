@@ -1,9 +1,9 @@
 import React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import Sidebar from "./Sidebar";
-import TransactionsPage from "./TransactionsPage";
-import SettingsPage from "./SettingsPage";
-import DashboardGroup from "./DashboardGroup";
+import TransactionsPage from "../Pages/TransactionsPage";
+import SettingsPage from "../Pages/SettingsPage";
+import DashboardPage from "../Pages/DashboardPage";
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,7 +19,7 @@ function Dashboard() {
         <Sidebar />
       </Grid>
       <Routes>
-        <Route path="/" element={<DashboardGroup />} />
+        <Route path="/" element={<DashboardPage />} />
         <Route path="/transactions" element={<TransactionsPage />} />
         <Route path="/settings" element={<SettingsPage />} />
       </Routes>

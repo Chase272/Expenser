@@ -1,17 +1,6 @@
 import React, { useState } from "react";
 import { List, ListItem, ListItemButton } from "@mui/material";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Routes,
-} from "react-router-dom";
-
-// Import your components
-import Dashboard from "./Dashboard";
-import TransactionsPage from "./TransactionsPage";
-import SettingsPage from "./SettingsPage";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   const [selected, setSelected] = useState("Dashboard");

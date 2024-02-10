@@ -1,9 +1,9 @@
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import React from "react";
-import ChartGroup from "./ChartGroup";
-import TransactionsGroup from "./TransactionsGroup";
+import ChartGroup from "../Components/ChartGroup";
+import TransactionsGroup from "../Components/TransactionsGroup";
 
-function DashboardGroup() {
+function DashboardPage() {
   console.log("ese");
 
   return (
@@ -23,4 +23,4 @@ function DashboardGroup() {
   );
 }
 
-export default DashboardGroup;
+export default DashboardPage;
