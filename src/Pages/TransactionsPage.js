@@ -24,7 +24,7 @@ function TransactionsPage() {
           </Tabs>
         </Grid>
         <Grid item padding={4}>
-          <Typography textAlign={"left"} color={"gray"} >
+          <Typography textAlign={"left"} color={"gray"}>
             17th Jan,2024
           </Typography>
           <TransactionCard />
@@ -41,8 +41,8 @@ function TransactionsPage() {
           {/* Add more TransactionCard components as needed */}
         </Grid>
       </Grid>
-      <Grid container width={"30%"}>
-        <TransactionDetailComponent/>
+      <Grid container width={"50%"}>
+        <TransactionDetailComponent />
       </Grid>
     </Stack>
   );

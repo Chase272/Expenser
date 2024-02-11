@@ -4,7 +4,7 @@ import React from "react";
 function SpendingsCard() {
   return (
     <Card>
-      <Stack>
+      <Stack alignItems={"flex-start"}>
         <Typography variant="h8">Total Balance</Typography>
 
         <Typography variant="h6">Amount</Typography>
