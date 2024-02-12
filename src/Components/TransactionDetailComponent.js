@@ -8,13 +8,12 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import TransactionCard from "./TransactionCard";
-import SpendingsCard from "./SpendingsCard";
+
 import { List, Wallet } from "@mui/icons-material";
 
 function TransactionDetailComponent() {
   return (
-    <Paper elevation={4} style={{ marginLeft: 40 }}>
+    <Paper elevation={4} style={{ marginLeft: 60 }}>
       <Stack margin={3} paddingX={5}>
         <Stack
           alignItems={"center"}

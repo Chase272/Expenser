@@ -6,7 +6,7 @@ import TransactionDetailComponent from "../Components/TransactionDetailComponent
 
 function TransactionsPage() {
   return (
-    <Stack width={"70%"} direction="row">
+    <Stack width={"75%"} direction="row">
       <Grid container direction="column" width={"65%"}>
         <Grid item width={"75%"}>
           <SearchBar />

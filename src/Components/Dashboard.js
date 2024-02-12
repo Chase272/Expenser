@@ -15,7 +15,7 @@ import {
 function Dashboard() {
   return (
     <Grid container direction={"row"}>
-      <Grid width={"30%"} style={{ backgroundColor: "" }}>
+      <Grid width={"25%"} style={{ backgroundColor: "" }}>
         <Sidebar />
       </Grid>
       <Routes>
