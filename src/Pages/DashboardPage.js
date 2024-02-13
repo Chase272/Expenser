@@ -2,7 +2,6 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import React from "react";
 import ChartGroup from "../Components/ChartGroup";
 import TransactionsGroup from "../Components/TransactionsGroup";
-import { Paper } from "@mui/material";
 
 function DashboardPage() {
   console.log("ese");
@@ -14,7 +13,7 @@ function DashboardPage() {
       // justifyContent={"space-between"}
       alignItems={"flex-start"}
     >
-      <Grid item padding={3}>
+      <Grid item padding={3} sx={{ backgroundColor: "#f7f7f5" }}>
         <ChartGroup />
       </Grid>
 
