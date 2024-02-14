@@ -21,7 +21,7 @@ function SpendingsChart() {
       <XAxis dataKey="month" />
       <YAxis />
       <Tooltip />
-      <Line type="monotone" dataKey="value" stroke="#00be00" />
+      <Line type="monotone" dataKey="value" stroke="black" />
       <Area type="monotone" dataKey="value" fill="#a3ff94" fillOpacity={0.5} />
     </LineChart>
   );

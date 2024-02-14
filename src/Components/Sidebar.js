@@ -44,9 +44,9 @@ function Sidebar() {
           key={item.name}
           sx={{
             "&:hover": {
-              color: "Green",
+              color: "#4C4CFD",
             },
-            color: selected === item.name ? "Green" : "inherit", // Change color property based on selected item
+            color: selected === item.name ? "#2700c8" : "inherit", // Change color property based on selected item
           }}
         >
           {item.icon}

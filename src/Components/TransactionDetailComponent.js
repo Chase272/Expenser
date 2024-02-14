@@ -13,7 +13,7 @@ import { List, Wallet } from "@mui/icons-material";
 
 function TransactionDetailComponent() {
   return (
-    <Paper elevation={4} style={{ marginLeft: 60 }}>
+    <Paper elevation={2} style={{ marginLeft: 60, marginTop: 10 }}>
       <Stack margin={3} paddingX={5}>
         <Stack
           alignItems={"center"}

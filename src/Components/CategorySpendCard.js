@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { FoodBank } from "@mui/icons-material";
+import { FoodBank, LocalDining } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -8,6 +8,7 @@ import {
   CardContent,
   CardMedia,
   LinearProgress,
+  Stack,
   Typography,
   linearProgressClasses,
 } from "@mui/material";
@@ -18,28 +19,60 @@ function CategorySpendCard() {
     height: 10,
     borderRadius: 5,
     [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor:
-        theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+      backgroundColor: "#414141",
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
-      backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
+      backgroundColor: "#fefefe",
     },
   }));
 
   return (
-    <Card>
+    <Card sx={{ width: 180 }}>
       <CardContent>
-        <FoodBank />
-        <Typography>Food and Drinks</Typography>
-      </CardContent>
+        <Stack>
+          <LocalDining
+            sx={{
+              fontSize: 50,
+              backgroundColor: "#f7f7f5",
+              borderRadius: "10px",
+              padding: "11px",
+              marginBottom: "5px",
+              boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.25)",
+              color: "blue",
+            }}
+          />
 
+          <Typography
+            variant="h8"
+            textAlign={"left"}
+            paddingTop={1}
+            sx={{ fontSize: "14px" }}
+          >
+            Food and Drinks
+          </Typography>
+        </Stack>
+      </CardContent>
       <Box
         alignItems={"center"}
         justifyContent={"center"}
-        sx={{ backgroundColor: "black", height: 30, borderRadius: 2 }}
+        sx={{
+          backgroundColor: "black",
+          height: 63,
+          borderRadius: 2,
+          paddingTop: 2,
+          paddingX: 1,
+        }}
       >
-        <BorderLinearProgress variant="determinate" value={20} />
+        <BorderLinearProgress variant="determinate" value={50} />
+        <Stack direction={"row"} justifyContent={"space-between"} paddingY={1}>
+          <Typography color={"white"} sx={{ fontSize: "13px" }}>
+            50%
+          </Typography>
+          <Typography color={"white"} sx={{ fontSize: "13px" }}>
+            200Rs
+          </Typography>
+        </Stack>
       </Box>
     </Card>
   );

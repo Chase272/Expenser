@@ -6,12 +6,15 @@ function TransactionsGroup() {
   return (
     <Container
       disableGutters
-      style={{ display: "inline-block", width: "160%" }}
+      style={{
+        width: "50%",
+        // backgroundColor: "blue",
+      }}
     >
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
-        paddingX={2}
+        paddingX={10}
         alignItems={"flex-end"}
       >
         <Typography variant="h5">Top Transcations</Typography>
