@@ -6,8 +6,6 @@ import { Stack } from "@mui/material";
 import BalanceCard from "../Components/BalanceCard";
 
 function DashboardPage() {
-  console.log("ese");
-
   return (
     <Grid
       container
@@ -15,23 +13,19 @@ function DashboardPage() {
       // justifyContent={"space-between"} "#f7f7f5"
       // alignItems={"flex-start"}
       columnGap={3}
+      width={"75%"}
     >
       <Grid item padding={2} zIndex={-1} sx={{ backgroundColor: "#f7f7f5" }}>
         <ChartGroup />
       </Grid>
 
-      <Grid
-        item
-        width={"30%"}
-        padding={3}
-        // sx={{ backgroundColor: "red" }}
-        justifyContent={"flex-start"}
-      >
-        <Grid item>
+      <Grid container width={"40%"} padding={3} justifyContent={"center"}>
+        <Grid item width={"100%"}>
           <TransactionsGroup />
         </Grid>
-
-        {/* <BalanceCard /> */}
+        <Grid item width={"100%"}>
+          <BalanceCard />
+        </Grid>
       </Grid>
     </Grid>
   );

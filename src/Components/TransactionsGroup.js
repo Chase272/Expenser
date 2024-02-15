@@ -1,21 +1,22 @@
-import { Card, Container, List, Stack, Typography } from "@mui/material";
+import { Box, Card, Container, List, Stack, Typography } from "@mui/material";
 import React from "react";
 import TransactionCard from "./TransactionCard";
 
 function TransactionsGroup() {
   return (
-    <Container
-      disableGutters
-      style={{
-        width: "50%",
-        // backgroundColor: "blue",
-      }}
-    >
+    // <Container
+    //   disableGutters
+    //   style={{
+    //     backgroundColor: "blue",
+    //   }}
+    // >
+
+    <Box>
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
-        paddingX={10}
         alignItems={"flex-end"}
+        borderBottom={2}
       >
         <Typography variant="h5">Top Transcations</Typography>
         <Typography variant="h7">See All</Typography>
@@ -27,7 +28,8 @@ function TransactionsGroup() {
         <TransactionCard />
         <TransactionCard />
       </List>
-    </Container>
+    </Box>
+    // </Container>
   );
 }
 

@@ -14,7 +14,6 @@ function App() {
         <CssBaseline />
         <div className="App">
           <UserCard />
-          {/* <SpendingsCard /> */}
           <Dashboard />
         </div>
       </ThemeProvider>
