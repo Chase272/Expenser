@@ -3,6 +3,8 @@ import { List, ListItem, ListItemAvatar, ListItemButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import {
   AutoAwesomeMosaic,
+  CallMade,
+  CallReceived,
   CompareArrows,
   Settings,
 } from "@mui/icons-material";
@@ -33,6 +35,16 @@ function Sidebar() {
           name: "Transactions",
           path: "/transactions",
           icon: <CompareArrows sx={{ fontSize: 25 }} />,
+        },
+        {
+          name: "Expenses",
+          path: "/expenses",
+          icon: <CallMade sx={{ fontSize: 25 }} />,
+        },
+        {
+          name: "Income",
+          path: "/income",
+          icon: <CallReceived sx={{ fontSize: 25 }} />,
         },
         {
           name: "Settings",

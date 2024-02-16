@@ -25,8 +25,8 @@ function TransactionCard() {
           secondary="Time"
           primaryTypographyProps={{
             style: {
-              fontWeight: "bold",
-              textDecoration: "none",
+              fontFamily: "sans-serif",
+              fontSize: "14px",
               color: "black",
             },
           }}

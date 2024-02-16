@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import TransactionCard from "../Components/TransactionCard";
 import SearchBar from "../Components/SearchBar";
-import { Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Pagination, Stack, Tab, Tabs, Typography } from "@mui/material";
 import TransactionDetailComponent from "../Components/TransactionDetailComponent";
 
 function TransactionsPage() {
@@ -39,6 +39,9 @@ function TransactionsPage() {
           <TransactionCard />
           <TransactionCard />
           {/* Add more TransactionCard components as needed */}
+        </Grid>
+        <Grid item paddingLeft={20}>
+          <Pagination count={10} />
         </Grid>
       </Grid>
       <Grid container width={"50%"}>

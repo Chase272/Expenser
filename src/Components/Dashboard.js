@@ -11,6 +11,8 @@ import {
   Link,
   Routes,
 } from "react-router-dom";
+import ExpensesPage from "../Pages/ExpensesPage";
+import IncomePage from "../Pages/IncomePage";
 
 function Dashboard() {
   return (
@@ -21,6 +23,8 @@ function Dashboard() {
       <Routes>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/transactions" element={<TransactionsPage />} />
+        <Route path="/expenses" element={<ExpensesPage />} />
+        <Route path="/income" element={<IncomePage />} />
         <Route path="/settings" element={<SettingsPage />} />
       </Routes>
     </Grid>
