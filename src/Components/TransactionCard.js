@@ -11,9 +11,12 @@ import {
   Typography,
 } from "@mui/material";
 
-import React from "react";
+import React, { useEffect } from "react";
 
-function TransactionCard() {
+function TransactionCard({ Name, Date, Category, Credit, Debit }) {
+  const Amount = Credit ? Credit : Debit;
+
+  const TypeOfTransaction = Credit ? "Credit" : "Debit";
   return (
     <Link component="div" underline="none">
       <ListItem component={Button} divider={true} alignItems="center">
@@ -21,8 +24,8 @@ function TransactionCard() {
           <Avatar src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fburger_5787016&psig=AOvVaw2E21_MuaJLnXgmTPDi5HLN&ust=1706894031307000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPC794jSioQDFQAAAAAdAAAAABAE" />
         </ListItemAvatar>
         <ListItemText
-          primary="Transaction Name"
-          secondary="Time"
+          primary={Name}
+          secondary={Date.toString()}
           primaryTypographyProps={{
             style: {
               fontFamily: "sans-serif",
@@ -32,13 +35,14 @@ function TransactionCard() {
           }}
         />
         <Chip
-          label="Travel"
+          label={TypeOfTransaction}
           sx={{ color: "white", backgroundColor: "green" }}
         />
+
         <ListItemText
           primary={
             <Typography align="right" color={"black"}>
-              $22
+              {Amount}
             </Typography>
           }
         />
