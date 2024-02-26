@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Table,
@@ -10,26 +10,19 @@ import {
   Paper,
   Stack,
 } from "@mui/material";
+import { useEffect } from "react";
 
 function ExpensesPage() {
-  // Sample data
-  const expenses = [
-    {
-      id: 1,
-      name: "Expense 1",
-      date: "2022-01-01",
-      category: "Category 1",
-      amount: 100,
-    },
-    {
-      id: 2,
-      name: "Expense 2",
-      date: "2022-01-02",
-      category: "Category 2",
-      amount: 200,
-    },
-    // Add more expenses here
-  ];
+  const [transactions, setTransactions] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3001/transactions/debit")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setTransactions(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   // Function to sort expenses by a specific column
   const sortExpenses = (column) => {
@@ -56,13 +49,13 @@ function ExpensesPage() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {expenses.map((expense) => (
-                <TableRow key={expense.id}>
-                  <TableCell>{expense.id}</TableCell>
-                  <TableCell>{expense.name}</TableCell>
-                  <TableCell>{expense.date}</TableCell>
-                  <TableCell>{expense.category}</TableCell>
-                  <TableCell>{expense.amount}</TableCell>
+              {transactions.map((transaction) => (
+                <TableRow key={transaction._id}>
+                  <TableCell>{transaction._id}</TableCell>
+                  <TableCell>{transaction.Name}</TableCell>
+                  <TableCell>{transaction.Date}</TableCell>
+                  <TableCell>{transaction.category}</TableCell>
+                  <TableCell>{transaction.Balance}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

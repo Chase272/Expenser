@@ -6,7 +6,7 @@ function TransactionsGroup() {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/top-transactions")
+    fetch("http://localhost:3001/top-transactions")
       .then((response) => response.json())
       .then((data) => setTransactions(data))
       .catch((error) => console.log(error));
@@ -23,15 +23,19 @@ function TransactionsGroup() {
         <Typography variant="h7">See All</Typography>
       </Stack>
       <List>
-        {transactions.map((transaction) => (
-          <TransactionCard
-            Name={transaction.Name}
-            Date={transaction.Date}
-            Category={transaction.Category}
-            Debit={transaction.Debit}
-            Credit={transaction.Credit}
-          />
-        ))}
+        {transactions.map((transaction) => {
+          const dateObject = new Date(transaction.Date);
+          const newDateString = dateObject.toString().slice(0, 15);
+          return (
+            <TransactionCard
+              Name={transaction.Name}
+              Date={newDateString}
+              Category={transaction.Category}
+              Debit={transaction.Debit}
+              Credit={transaction.Credit}
+            />
+          );
+        })}
       </List>
     </Box>
   );

@@ -25,7 +25,7 @@ function TransactionCard({ Name, Date, Category, Credit, Debit }) {
         </ListItemAvatar>
         <ListItemText
           primary={Name}
-          secondary={Date.toString()}
+          secondary={Date}
           primaryTypographyProps={{
             style: {
               fontFamily: "sans-serif",
