@@ -55,7 +55,7 @@ function ExpensesPage() {
                   <TableCell>{transaction.Name}</TableCell>
                   <TableCell>{transaction.Date}</TableCell>
                   <TableCell>{transaction.category}</TableCell>
-                  <TableCell>{transaction.Balance}</TableCell>
+                  <TableCell>{transaction.Debit}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
