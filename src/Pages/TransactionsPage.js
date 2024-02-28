@@ -3,8 +3,32 @@ import TransactionCard from "../Components/TransactionCard";
 import SearchBar from "../Components/SearchBar";
 import { Pagination, Stack, Tab, Tabs, Typography } from "@mui/material";
 import TransactionDetailComponent from "../Components/TransactionDetailComponent";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function TransactionsPage() {
+  const [transactionData, setTransactionData] = useState([]);
+  const [page, setPage] = useState(1);
+  const DatesPerPage = 1;
+
+  useEffect(() => {
+    fetch("http://localhost:3001/transactions/ByDate")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setTransactionData(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
+
+  const startIndex = (page - 1) * DatesPerPage;
+  const endIndex = startIndex + DatesPerPage;
+  const displayedTransactions = transactionData.slice(startIndex, endIndex);
+
   return (
     <Stack width={"75%"} direction="row">
       <Grid container direction="column" width={"65%"}>
@@ -23,25 +47,36 @@ function TransactionsPage() {
             <Tab label="Item Three" />
           </Tabs>
         </Grid>
-        <Grid item padding={4}>
-          <Typography textAlign={"left"} color={"gray"}>
-            17th Jan,2024
-          </Typography>
-          <TransactionCard />
-          <TransactionCard />
-          <TransactionCard />
-          {/* Add more TransactionCard components as needed */}
-        </Grid>
-        <Grid item padding={4}>
-          <Typography textAlign={"left"} color={"gray"}>
-            18th Jan,2024
-          </Typography>
-          <TransactionCard />
-          <TransactionCard />
-          {/* Add more TransactionCard components as needed */}
-        </Grid>
+
+        {displayedTransactions.map((data) => {
+          const dateObject = new Date(data._id);
+          const newDateString = dateObject.toString().slice(0, 15);
+
+          return (
+            <Grid item padding={4}>
+              <Typography textAlign={"left"} color={"gray"}>
+                {newDateString}
+              </Typography>
+              {data.transactions.map((transaction, index) => {
+                return (
+                  <TransactionCard
+                    Name={transaction.Name}
+                    Date={data._id}
+                    Category={transaction.Category}
+                    Debit={transaction.Debit}
+                    Credit={transaction.Credit}
+                  />
+                );
+              })}
+            </Grid>
+          );
+        })}
         <Grid item paddingLeft={20}>
-          <Pagination count={10} />
+          <Pagination
+            count={Math.ceil(transactionData.length / DatesPerPage)}
+            page={page}
+            onChange={handlePageChange}
+          />
         </Grid>
       </Grid>
       <Grid container width={"50%"}>
