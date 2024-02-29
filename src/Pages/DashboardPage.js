@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import React from "react";
 import ChartGroup from "../Components/ChartGroup";
-import TransactionsGroup from "../Components/TransactionsGroup";
+import TransactionsGroup from "../Components/TopTransactionsGroup";
 import { Stack } from "@mui/material";
 import BalanceCard from "../Components/BalanceCard";
 

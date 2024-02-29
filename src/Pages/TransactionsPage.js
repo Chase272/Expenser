@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import TransactionCard from "../Components/TransactionCard";
+import TransactionCard from "../Components/TransactionCardComponent";
 import SearchBar from "../Components/SearchBar";
 import { Pagination, Stack, Tab, Tabs, Typography } from "@mui/material";
 import TransactionDetailComponent from "../Components/TransactionDetailComponent";
@@ -8,6 +8,8 @@ import { useEffect } from "react";
 
 function TransactionsPage() {
   const [transactionData, setTransactionData] = useState([]);
+
+  const [selectedTransction, setSelectedTransction] = useState();
   const [page, setPage] = useState(1);
   const DatesPerPage = 1;
 
@@ -15,7 +17,6 @@ function TransactionsPage() {
     fetch("http://localhost:3001/transactions/ByDate")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setTransactionData(data);
       })
       .catch((error) => console.log(error));
@@ -23,6 +24,11 @@ function TransactionsPage() {
 
   const handlePageChange = (event, value) => {
     setPage(value);
+  };
+
+  const onClickHandler = (transaction) => {
+    console.log(transaction);
+    setSelectedTransction(transaction);
   };
 
   const startIndex = (page - 1) * DatesPerPage;
@@ -65,6 +71,7 @@ function TransactionsPage() {
                     Category={transaction.Category}
                     Debit={transaction.Debit}
                     Credit={transaction.Credit}
+                    onClickFuntion={() => onClickHandler(transaction)}
                   />
                 );
               })}
@@ -80,7 +87,14 @@ function TransactionsPage() {
         </Grid>
       </Grid>
       <Grid container width={"50%"}>
-        <TransactionDetailComponent />
+        {selectedTransction && (
+          <TransactionDetailComponent
+            name={selectedTransction.Name}
+            description={selectedTransction.Description}
+            balance={selectedTransction.Balance}
+            category={"None"}
+          />
+        )}
       </Grid>
     </Stack>
   );

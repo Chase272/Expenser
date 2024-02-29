@@ -13,12 +13,19 @@ import {
 
 import React, { useEffect } from "react";
 
-function TransactionCard({ Name, Date, Category, Credit, Debit }) {
+function TransactionCard({
+  Name,
+  Date,
+  Category,
+  Credit,
+  Debit,
+  onClickFuntion,
+}) {
   const Amount = Credit ? Credit : Debit;
 
   const TypeOfTransaction = Credit ? "Credit" : "Debit";
   return (
-    <Link component="div" underline="none">
+    <Link component="div" underline="none" onClick={onClickFuntion}>
       <ListItem component={Button} divider={true} alignItems="center">
         <ListItemAvatar>
           <Avatar src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fburger_5787016&psig=AOvVaw2E21_MuaJLnXgmTPDi5HLN&ust=1706894031307000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPC794jSioQDFQAAAAAdAAAAABAE" />

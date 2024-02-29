@@ -1,4 +1,4 @@
-import TransactionCard from "./TransactionCard";
+import TransactionCard from "./TransactionCardComponent";
 import { Box, Card, Container, List, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
