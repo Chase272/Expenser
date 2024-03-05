@@ -1,16 +1,36 @@
-import { TOP_TRANSCTIONS } from "./Types";
+import {
+  FETCH_TOP_TRANSACTIONS_FAILURE,
+  FETCH_TOP_TRANSACTIONS_REQUEST,
+  FETCH_TOP_TRANSACTIONS_SUCCESS,
+} from "./TransactionTypes";
 
 const initialState = {
-  Transactions: [],
+  loading: true,
+  data: [],
+  error: "",
 };
 
 const TranscationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOP_TRANSCTIONS:
-        
+    case FETCH_TOP_TRANSACTIONS_REQUEST:
       return {
         ...state,
-        noCakes: state.noCakes - 1,
+        loading: true,
+      };
+
+    case FETCH_TOP_TRANSACTIONS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      };
+
+    case FETCH_TOP_TRANSACTIONS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        data: [],
+        error: action.payload,
       };
     default:
       return state;

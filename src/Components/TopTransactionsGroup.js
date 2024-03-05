@@ -1,16 +1,22 @@
 import TransactionCard from "./TransactionCardComponent";
 import { Box, Card, Container, List, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { fetchTopTransactions } from "../redux/TransactionActions";
+import { useDispatch, useSelector } from "react-redux";
 
 function TransactionsGroup() {
-  const [transactions, setTransactions] = useState([]);
+  const transactions = useSelector((state) => {
+    return state.data;
+  });
+  const loading = useSelector((state) => {
+    return state.loading;
+  });
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("http://localhost:3001/top-transactions")
-      .then((response) => response.json())
-      .then((data) => setTransactions(data))
-      .catch((error) => console.log(error));
+    dispatch(fetchTopTransactions());
   }, []);
+
   return (
     <Box>
       <Stack
@@ -23,19 +29,20 @@ function TransactionsGroup() {
         <Typography variant="h7">See All</Typography>
       </Stack>
       <List>
-        {transactions.map((transaction) => {
-          const dateObject = new Date(transaction.Date);
-          const newDateString = dateObject.toString().slice(0, 15);
-          return (
-            <TransactionCard
-              Name={transaction.Name}
-              Date={newDateString}
-              Category={transaction.Category}
-              Debit={transaction.Debit}
-              Credit={transaction.Credit}
-            />
-          );
-        })}
+        {!loading &&
+          transactions.map((transaction) => {
+            const dateObject = new Date(transaction.Date);
+            const newDateString = dateObject.toString().slice(0, 15);
+            return (
+              <TransactionCard
+                Name={transaction.Name}
+                Date={newDateString}
+                Category={transaction.Category}
+                Debit={transaction.Debit}
+                Credit={transaction.Credit}
+              />
+            );
+          })}
       </List>
     </Box>
   );

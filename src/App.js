@@ -14,17 +14,19 @@ import MainPage from "./Components/MainPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={Newtheme}>
-        <CssBaseline />
-        <div className="App">
-          <Routes>
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/*" element={<MainPage />} />
-          </Routes>
-        </div>
-      </ThemeProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <ThemeProvider theme={Newtheme}>
+          <CssBaseline />
+          <div className="App">
+            <Routes>
+              <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/*" element={<MainPage />} />
+            </Routes>
+          </div>
+        </ThemeProvider>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

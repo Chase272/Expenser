@@ -31,6 +31,8 @@ function TransactionsPage() {
     setSelectedTransction(transaction);
   };
 
+  
+
   const startIndex = (page - 1) * DatesPerPage;
   const endIndex = startIndex + DatesPerPage;
   const displayedTransactions = transactionData.slice(startIndex, endIndex);
