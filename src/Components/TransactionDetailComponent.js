@@ -1,17 +1,22 @@
 import {
   Avatar,
+  Chip,
+  InputAdornment,
   ListItem,
   ListItemAvatar,
   ListItemText,
   Paper,
   Stack,
+  TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
-import { Balance, List, Wallet } from "@mui/icons-material";
+import { Balance, Close, Create, List, Wallet } from "@mui/icons-material";
 
 function TransactionDetailComponent({ name, description, balance, category }) {
+  const [value, setValue] = useState("Food");
+  const [editable, setEditable] = useState(false);
   return (
     <Paper elevation={2} style={{ marginLeft: 30, marginTop: 10 }}>
       <Stack margin={3} paddingX={1}>
@@ -36,6 +41,24 @@ function TransactionDetailComponent({ name, description, balance, category }) {
           >
             {description}
           </Typography>
+          <Stack direction={"row"}>
+            <Chip label={value} />
+
+            <Chip
+              icon={editable ? <Close /> : <Create sx={{ fontSize: 15 }} />}
+              clickable
+              sx={{ paddingLeft: 2 }}
+              onClick={() => {
+                setEditable(!editable);
+              }}
+            />
+          </Stack>
+          {editable && (
+            <TextField
+              value={value}
+              onChange={(event) => setValue(event.target.value)}
+            />
+          )}
         </Stack>
         <ListItem></ListItem>
         <ListItem>
