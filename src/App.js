@@ -20,8 +20,8 @@ function App() {
           <CssBaseline />
           <div className="App">
             <Routes>
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/*" element={<MainPage />} />
+              <Route index path="/" element={<SignUpPage />} />
+              <Route path="/dashboard/*" element={<MainPage />} />
             </Routes>
           </div>
         </ThemeProvider>

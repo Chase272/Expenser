@@ -42,25 +42,30 @@ function TransactionDetailComponent({ name, description, balance, category }) {
             {description}
           </Typography>
           <Stack direction={"row"}>
-            <Chip label={value} />
-
-            <Chip
-              icon={editable ? <Close /> : <Create sx={{ fontSize: 15 }} />}
-              clickable
-              sx={{ paddingLeft: 2 }}
-              onClick={() => {
-                setEditable(!editable);
-              }}
-            />
+            {editable ? (
+              <TextField
+                value={value}
+                size="small"
+                onChange={(event) => setValue(event.target.value)}
+                helperText="Press Enter To Finish"
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    setEditable(!editable);
+                  }
+                }}
+              />
+            ) : (
+              <Chip
+                label={value}
+                clickable
+                sx={{ padding: 2, marginTop: 2, marginBottom: -2 }}
+                onClick={() => {
+                  setEditable(!editable);
+                }}
+              />
+            )}
           </Stack>
-          {editable && (
-            <TextField
-              value={value}
-              onChange={(event) => setValue(event.target.value)}
-            />
-          )}
         </Stack>
-        <ListItem></ListItem>
         <ListItem>
           <ListItemAvatar>
             <Wallet />

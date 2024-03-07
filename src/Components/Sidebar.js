@@ -28,27 +28,27 @@ function Sidebar() {
       {[
         {
           name: "Dashboard",
-          path: "/",
+          path: "/dashboard",
           icon: <AutoAwesomeMosaic sx={{ fontSize: 25 }} />,
         },
         {
           name: "Transactions",
-          path: "/transactions",
+          path: "/dashboard/transactions",
           icon: <CompareArrows sx={{ fontSize: 25 }} />,
         },
         {
           name: "Expenses",
-          path: "/expenses",
+          path: "/dashboard/expenses",
           icon: <CallMade sx={{ fontSize: 25 }} />,
         },
         {
           name: "Income",
-          path: "/income",
+          path: "/dashboard/income",
           icon: <CallReceived sx={{ fontSize: 25 }} />,
         },
         {
           name: "Settings",
-          path: "/settings",
+          path: "/dashboard/settings",
           icon: <Settings sx={{ fontSize: 25 }} />,
         },
       ].map((item, index) => (

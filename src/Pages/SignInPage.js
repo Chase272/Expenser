@@ -37,7 +37,7 @@ const SignUpPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button variant="contained" color="primary" onClick={handleSignUp}>
-            <Link to="/">Sign Up</Link>
+            <Link to="/dashboard/">Sign Up</Link>
           </Button>
         </Stack>
       </Paper>
