@@ -8,7 +8,7 @@ function ChartGroup() {
     <Box>
       <Box>
         <Typography variant="h5" textAlign={"left"} paddingBottom={4}>
-          Line Chart
+          Analysis
         </Typography>
         <LineChartComponent />
       </Box>

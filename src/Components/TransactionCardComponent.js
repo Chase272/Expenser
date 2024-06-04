@@ -24,6 +24,7 @@ function TransactionCard({
   const Amount = Credit ? Credit : Debit;
 
   const TypeOfTransaction = Credit ? "Credit" : "Debit";
+  const chipColor = Credit ? "green" : "red";
   return (
     <Link component="div" underline="none" onClick={onClickFuntion}>
       <ListItem component={Button} divider={true} alignItems="center">
@@ -43,7 +44,7 @@ function TransactionCard({
         />
         <Chip
           label={TypeOfTransaction}
-          sx={{ color: "white", backgroundColor: "green" }}
+          sx={{ color: "white", backgroundColor: chipColor  }}
         />
 
         <ListItemText

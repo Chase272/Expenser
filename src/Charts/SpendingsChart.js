@@ -1,29 +1,44 @@
-import React from "react";
+import { Button, Stack } from "@mui/material";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, Area, Tooltip } from "recharts";
-
-const data = [
-  { month: "Jan", value: 1200 },
-  { month: "Feb", value: 1500 },
-  { month: "Mar", value: 1800 },
-  { month: "Apr", value: 2000 },
-  { month: "May", value: 1700 },
-  { month: "Jun", value: 1900 },
-];
+import { BarChart } from "@mui/x-charts/BarChart";
 
 function SpendingsChart() {
+  const [chartData, setChartData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    fetch("http://localhost:3001/charts/transactions")
+      .then((response) => response.json())
+      .then((data) => {
+        setChartData(data);
+        setIsLoading(false); // Set loading state to false after data is loaded
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const incomeArray = [];
+  const expenseArray = [];
+  for (let transactions of chartData) {
+    incomeArray.push(transactions.income);
+    expenseArray.push(transactions.expense);
+  }
+
+  console.log(expenseArray);
   return (
-    <LineChart
-      width={600}
-      height={300}
-      data={data}
-      margin={{ top: 5, right: 30, left: 10, bottom: 5 }}
-    >
-      <XAxis dataKey="month" />
-      <YAxis />
-      <Tooltip />
-      <Line type="monotone" dataKey="value" stroke="black" />
-      <Area type="monotone" dataKey="value" fill="#a3ff94" fillOpacity={0.5} />
-    </LineChart>
+    <>
+      {isLoading ? (
+        <div>Loading...</div> // Display loading message while data is being fetched
+      ) : (
+        <BarChart
+          xAxis={[{ scaleType: "band", data: ["January", "Febuary"] }]}
+          series={[{ data: incomeArray }, { data: expenseArray }]}
+          width={500}
+          height={300}
+        />
+      )}
+    </>
   );
 }
 
