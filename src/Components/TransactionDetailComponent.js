@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Button,
   Chip,
   InputAdornment,
   ListItem,
@@ -13,10 +14,42 @@ import {
 import React, { useState } from "react";
 
 import { Balance, Close, Create, List, Wallet } from "@mui/icons-material";
+import { useEffect } from "react";
 
 function TransactionDetailComponent({ name, description, balance, category }) {
-  const [value, setValue] = useState("Food");
+  // console.log(category);
+
+  const [value, setValue] = useState("");
   const [editable, setEditable] = useState(false);
+  const [detailCardCategory, setDetailCardCategory] = useState(category);
+
+  useEffect(() => {
+    setDetailCardCategory(category);
+  }, [category]);
+  const changeSingleTransactionbuttonHandler = () => {
+    setValue("");
+    setEditable(!editable);
+    fetch("http://localhost:3001/details/single/category", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ description, detailCardCategory }),
+    });
+  };
+
+  const changeMultipleTransactionbuttonHandler = () => {
+    console.log(detailCardCategory);
+    setValue("");
+    setEditable(!editable);
+    fetch("http://localhost:3001/details/multiple/category", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, detailCardCategory }),
+    });
+  };
   return (
     <Paper elevation={2} style={{ marginLeft: 30, marginTop: 10 }}>
       <Stack margin={3} paddingX={1}>
@@ -43,20 +76,38 @@ function TransactionDetailComponent({ name, description, balance, category }) {
           </Typography>
           <Stack direction={"row"}>
             {editable ? (
-              <TextField
-                value={value}
-                size="small"
-                onChange={(event) => setValue(event.target.value)}
-                helperText="Press Enter To Finish"
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    setEditable(!editable);
-                  }
-                }}
-              />
+              <Stack>
+                <TextField
+                  value={value}
+                  size="small"
+                  onChange={(event) => {
+                    setDetailCardCategory(event.target.value);
+                    setValue(event.target.value);
+                  }}
+                  // helperText="Press Enter To Finish"
+                  // onKeyDown={(event) => {
+                  //   if (event.key === "Enter") {
+                  //     setEditable(!editable);
+                  //   }
+                  // }}
+                />
+
+                <Button
+                  size="small"
+                  onClick={changeSingleTransactionbuttonHandler}
+                >
+                  Change For This Transaction
+                </Button>
+                <Button
+                  size="small"
+                  onClick={changeMultipleTransactionbuttonHandler}
+                >
+                  Change For All Transactions with same person
+                </Button>
+              </Stack>
             ) : (
               <Chip
-                label={value}
+                label={detailCardCategory}
                 clickable
                 sx={{ padding: 2, marginTop: 2, marginBottom: -2 }}
                 onClick={() => {
@@ -80,8 +131,8 @@ function TransactionDetailComponent({ name, description, balance, category }) {
             <List />
           </ListItemAvatar>
           <ListItemText
-            primary="BXXS-DAW353-S45SC"
-            secondary="Invoice"
+            primary={description.split("/")[4]}
+            secondary="Bank Name"
           ></ListItemText>
         </ListItem>
       </Stack>
