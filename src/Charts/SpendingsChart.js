@@ -7,7 +7,24 @@ import { BarChart } from "@mui/x-charts/BarChart";
 function SpendingsChart() {
   const [chartData, setChartData] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Add loading state
+  const incomeArray = [];
+  const expenseArray = [];
+  const monthsArray = [];
 
+  const monthsObj = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December",
+  };
   useEffect(() => {
     fetch("http://localhost:3001/charts/transactions")
       .then((response) => response.json())
@@ -18,14 +35,12 @@ function SpendingsChart() {
       .catch((error) => console.log(error));
   }, []);
 
-  const incomeArray = [];
-  const expenseArray = [];
   for (let transactions of chartData) {
     incomeArray.push(transactions.income);
     expenseArray.push(transactions.expense);
+    monthsArray.push(monthsObj[transactions.month]);
   }
 
-  console.log(expenseArray);
   return (
     <>
       {isLoading ? (
