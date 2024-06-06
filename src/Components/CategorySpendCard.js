@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { FoodBank, LocalDining } from "@mui/icons-material";
+import { FoodBank, LocalDining, Flight } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -14,7 +14,11 @@ import {
 } from "@mui/material";
 import React from "react";
 
-function CategorySpendCard() {
+function CategorySpendCard({ categoryName, Amount, Percentage }) {
+  if (categoryName === "") {
+    categoryName = "Others";
+  }
+
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -27,29 +31,30 @@ function CategorySpendCard() {
     },
   }));
 
+  const IconDesignObj = {
+    fontSize: 50,
+    backgroundColor: "#f7f7f5",
+    borderRadius: "10px",
+    padding: "11px",
+    marginBottom: "5px",
+    boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.25)",
+    color: "blue",
+  };
+
   return (
-    <Card sx={{ width: 180 }}>
+    <Card sx={{ width: 180, marginX: 1 }}>
       <CardContent>
         <Stack>
-          <LocalDining
-            sx={{
-              fontSize: 50,
-              backgroundColor: "#f7f7f5",
-              borderRadius: "10px",
-              padding: "11px",
-              marginBottom: "5px",
-              boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.25)",
-              color: "blue",
-            }}
-          />
-
+          {categoryName === "Food" && <LocalDining sx={IconDesignObj} />}
+          {categoryName === "Travel" && <Flight sx={IconDesignObj} />}
+          {categoryName === "Shopping" && <FoodBank sx={IconDesignObj} />}
           <Typography
             variant="h8"
             textAlign={"left"}
             paddingTop={1}
             sx={{ fontSize: "14px" }}
           >
-            Food and Drinks
+            {categoryName}
           </Typography>
         </Stack>
       </CardContent>
@@ -64,13 +69,16 @@ function CategorySpendCard() {
           paddingX: 1,
         }}
       >
-        <BorderLinearProgress variant="determinate" value={50} />
+        <BorderLinearProgress
+          variant="determinate"
+          value={Math.round(Percentage)}
+        />
         <Stack direction={"row"} justifyContent={"space-between"} paddingY={1}>
           <Typography color={"white"} sx={{ fontSize: "13px" }}>
-            50%
+            {Math.round(Percentage)}%
           </Typography>
           <Typography color={"white"} sx={{ fontSize: "13px" }}>
-            200Rs
+            {Amount}Rs
           </Typography>
         </Stack>
       </Box>
