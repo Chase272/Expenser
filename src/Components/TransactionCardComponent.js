@@ -38,21 +38,16 @@ function TransactionCard({
             style: {
               fontFamily: "sans-serif",
               fontSize: "14px",
-              color: "black",
             },
           }}
         />
         <Chip
           label={TypeOfTransaction}
-          sx={{ color: "white", backgroundColor: chipColor  }}
+          sx={{ color: "white", backgroundColor: chipColor }}
         />
 
         <ListItemText
-          primary={
-            <Typography align="right" color={"black"}>
-              {Amount}
-            </Typography>
-          }
+          primary={<Typography align="right">{Amount}</Typography>}
         />
       </ListItem>
     </Link>

@@ -13,6 +13,8 @@ function TransactionsPage() {
   const [page, setPage] = useState(1);
   const DatesPerPage = 1;
 
+  // console.log(selectedTransction.Category);
+
   useEffect(() => {
     fetch("http://localhost:3001/transactions/ByDate")
       .then((response) => response.json())
@@ -27,11 +29,8 @@ function TransactionsPage() {
   };
 
   const onClickHandler = (transaction) => {
-    console.log(transaction);
     setSelectedTransction(transaction);
   };
-
-  
 
   const startIndex = (page - 1) * DatesPerPage;
   const endIndex = startIndex + DatesPerPage;
@@ -46,7 +45,7 @@ function TransactionsPage() {
         <Grid item>
           <Tabs
             // onChange={handleChange}
-            // value={value}
+            value={1}
             aria-label="Tabs where selection follows focus"
             selectionFollowsFocus
           >
@@ -94,7 +93,7 @@ function TransactionsPage() {
             name={selectedTransction.Name}
             description={selectedTransction.Description}
             balance={selectedTransction.Balance}
-            category={"None"}
+            category={selectedTransction.Category}
           />
         )}
       </Grid>

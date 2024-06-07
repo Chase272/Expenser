@@ -4,7 +4,7 @@ const useStyles = makeStyles(() =>
   createStyles({
     "@global": {
       html: {
-        backgroundColor: "#ff0000", // red color
+        backgroundColor: "#yellow", // red color
       },
     },
   })

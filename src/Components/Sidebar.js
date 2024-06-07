@@ -10,17 +10,18 @@ import {
 } from "@mui/icons-material";
 
 function Sidebar() {
-  const [selected, setSelected] = useState("Dashboard");
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const handleListItemClick = (event, index) => {
-    setSelected(index);
+  const handleListItemClick = (event, name) => {
+    setSelectedItem(name);
+    console.log(name);
   };
 
   return (
     <List
       sx={{
         // backgroundColor: "red",
-        width: "70%",
+        width: "100%",
         padding: "20px",
         fontFamily: "Poppins",
       }}
@@ -55,10 +56,14 @@ function Sidebar() {
         <ListItem
           key={item.name}
           sx={{
+            fontWeight: 300,
+
+            backgroundColor: selectedItem == item.name ? "#5c85e7" : "",
+            borderRadius: 2,
             "&:hover": {
-              color: "#4C4CFD",
+              backgroundColor: "#5c85e7",
+              borderRadius: 2,
             },
-            color: selected === item.name ? "#2700c8" : "inherit", // Change color property based on selected item
           }}
         >
           {item.icon}
@@ -66,11 +71,7 @@ function Sidebar() {
             component={Link}
             to={item.path}
             onClick={(event) => handleListItemClick(event, item.name)}
-            sx={{
-              "&:hover": {
-                backgroundColor: "white",
-              },
-            }}
+            disableRipple
           >
             {item.name}
           </ListItemButton>
