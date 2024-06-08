@@ -20,7 +20,7 @@ function ChartGroup() {
   return (
     <Box>
       <Box>
-        <Typography variant="h5" textAlign={"left"} paddingBottom={4}>
+        <Typography variant="h4" textAlign={"left"}>
           Analysis
         </Typography>
         <LineChartComponent />
@@ -30,7 +30,7 @@ function ChartGroup() {
           variant="h6"
           fontSize={"14px"}
           textAlign={"left"}
-          paddingY={2}
+          paddingY={1}
           color={"grey"}
         >
           <b> Where you spend your money ? </b>
@@ -42,7 +42,7 @@ function ChartGroup() {
                 key={category.category}
                 categoryName={category.category}
                 Amount={category.totalDebit}
-                Percentage = {category.percentage}
+                Percentage={category.percentage}
               />
             ))}
           </Stack>

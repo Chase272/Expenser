@@ -4,7 +4,10 @@ import React from "react";
 
 function BalanceCard() {
   return (
-    <Paper sx={{ paddingTop: 1 }} elevation={3}>
+    <Paper
+      sx={{ paddingTop: 1, color: "White", backgroundColor: "#121212" }}
+      elevation={3}
+    >
       <Stack alignItems={"center"} justifyContent={"center"}>
         <Typography variant="h8">Total Balance</Typography>
 
@@ -13,12 +16,12 @@ function BalanceCard() {
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
-        sx={{ backgroundColor: "#000000" }}
+        sx={{ backgroundColor: "#5c85e7" }}
         borderRadius={0}
       >
         <Button
           sx={{
-            backgroundColor: "#414141",
+            backgroundColor: "#5c85e7",
             color: "white",
             paddingX: 10,
             borderRadius: 0,
@@ -30,7 +33,7 @@ function BalanceCard() {
           variant="outlined"
           color="secondary"
           sx={{
-            backgroundColor: "#414141",
+            backgroundColor: "#5c85e7",
             color: "white",
             paddingX: 10,
             borderRadius: 0,

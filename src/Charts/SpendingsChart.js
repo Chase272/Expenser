@@ -49,8 +49,8 @@ function SpendingsChart() {
         <BarChart
           xAxis={[{ scaleType: "band", data: ["January", "Febuary"] }]}
           series={[{ data: incomeArray }, { data: expenseArray }]}
-          width={500}
-          height={300}
+          width={600}
+          height={350}
         />
       )}
     </>

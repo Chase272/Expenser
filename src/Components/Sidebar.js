@@ -57,7 +57,7 @@ function Sidebar() {
           key={item.name}
           sx={{
             fontWeight: 300,
-
+            transition: "background-color 0.2s ease",
             backgroundColor: selectedItem == item.name ? "#5c85e7" : "",
             borderRadius: 2,
             "&:hover": {

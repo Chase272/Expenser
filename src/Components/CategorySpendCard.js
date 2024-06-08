@@ -1,5 +1,13 @@
 import styled from "@emotion/styled";
-import { FoodBank, LocalDining, Flight } from "@mui/icons-material";
+import {
+  FoodBank,
+  Group,
+  Flight,
+  Dining,
+  DiningOutlined,
+  LocalDining,
+  AddToQueue,
+} from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -27,7 +35,7 @@ function CategorySpendCard({ categoryName, Amount, Percentage }) {
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
-      backgroundColor: "#fefefe",
+      backgroundColor: "#5c85e7",
     },
   }));
 
@@ -38,16 +46,24 @@ function CategorySpendCard({ categoryName, Amount, Percentage }) {
     padding: "11px",
     marginBottom: "5px",
     boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.25)",
-    color: "blue",
+    color: "#000000",
   };
 
   return (
-    <Card sx={{ width: 180, marginX: 1 }}>
+    <Card
+      sx={{
+        width: 180,
+        marginX: 1,
+        backgroundColor: "#181818",
+        borderRadius: 2,
+      }}
+    >
       <CardContent>
         <Stack>
-          {categoryName === "Food" && <LocalDining sx={IconDesignObj} />}
+          {categoryName === "Person" && <Group sx={IconDesignObj} />}
           {categoryName === "Travel" && <Flight sx={IconDesignObj} />}
-          {categoryName === "Shopping" && <FoodBank sx={IconDesignObj} />}
+          {categoryName === "Food" && <LocalDining sx={IconDesignObj} />}
+          {categoryName === "Others" && <AddToQueue sx={IconDesignObj} />}
           <Typography
             variant="h8"
             textAlign={"left"}

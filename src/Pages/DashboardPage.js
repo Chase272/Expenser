@@ -15,7 +15,7 @@ function DashboardPage() {
       columnGap={3}
       width={"75%"}
     >
-      <Grid item padding={2} zIndex={-1} sx={{ backgroundColor: "#f7f7f5" }}>
+      <Grid item padding={2} zIndex={-1}>
         <ChartGroup />
       </Grid>
 

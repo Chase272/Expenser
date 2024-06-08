@@ -1,3 +1,4 @@
+import { Apple, Flight, Padding, Person } from "@mui/icons-material";
 import {
   Avatar,
   Box,
@@ -22,15 +23,27 @@ function TransactionCard({
   onClickFuntion,
 }) {
   const Amount = Credit ? Credit : Debit;
-
+  const IconDesignObj = {
+    backgroundColor: "grey",
+    borderRadius: "10px",
+  };
   const TypeOfTransaction = Credit ? "Credit" : "Debit";
-  const chipColor = Credit ? "green" : "red";
+  const chipColor = "#5c85e7";
+
+  const newAmount = Debit ? "-" + Amount : "" + Amount;
+  let avatarIcon;
+  if (Category === "Person") {
+    avatarIcon = <Person />;
+  } else if (Category === "Travel") {
+    avatarIcon = <Flight />;
+  } else {
+    avatarIcon = <Apple />;
+  }
+
   return (
     <Link component="div" underline="none" onClick={onClickFuntion}>
       <ListItem component={Button} divider={true} alignItems="center">
-        <ListItemAvatar>
-          <Avatar src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fburger_5787016&psig=AOvVaw2E21_MuaJLnXgmTPDi5HLN&ust=1706894031307000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPC794jSioQDFQAAAAAdAAAAABAE" />
-        </ListItemAvatar>
+        {/* <ListItemAvatar>{avatarIcon}</ListItemAvatar> */}
         <ListItemText
           primary={Name}
           secondary={Date}
@@ -38,6 +51,7 @@ function TransactionCard({
             style: {
               fontFamily: "sans-serif",
               fontSize: "14px",
+              fontWeight: "light",
             },
           }}
         />
@@ -47,7 +61,11 @@ function TransactionCard({
         />
 
         <ListItemText
-          primary={<Typography align="right">{Amount}</Typography>}
+          primary={
+            <Typography align="right" color={"white"}>
+              {newAmount + "₹"}
+            </Typography>
+          }
         />
       </ListItem>
     </Link>
