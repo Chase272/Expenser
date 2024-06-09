@@ -51,7 +51,10 @@ function TransactionDetailComponent({ name, description, balance, category }) {
     });
   };
   return (
-    <Paper elevation={2} style={{ marginLeft: 30, marginTop: 10 }}>
+    <Paper
+      elevation={2}
+      style={{ marginLeft: 30, marginTop: 10, backgroundColor: "#181818" }}
+    >
       <Stack margin={3} paddingX={1}>
         <Stack
           alignItems={"center"}
@@ -109,7 +112,12 @@ function TransactionDetailComponent({ name, description, balance, category }) {
               <Chip
                 label={detailCardCategory}
                 clickable
-                sx={{ padding: 2, marginTop: 2, marginBottom: -2 }}
+                sx={{
+                  padding: 2,
+                  marginTop: 2,
+                  marginBottom: -2,
+                  backgroundColor: "#5c85e7",
+                }}
                 onClick={() => {
                   setEditable(!editable);
                 }}
